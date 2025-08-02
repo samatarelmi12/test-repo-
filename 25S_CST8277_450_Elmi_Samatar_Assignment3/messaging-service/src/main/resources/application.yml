@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: messaging-service
+  datasource:
+    url: jdbc:h2:mem:messagesdb;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+server:
+  port: 8082
+
+# URL of the user-management-service token validation endpoint.  Adjust as
+# needed when deploying to Kubernetes or Docker.  The messaging service will
+# call this endpoint to validate tokens on every request.
+user-management:
+  validate-url: "http://localhost:8081/api/auth/validate"
